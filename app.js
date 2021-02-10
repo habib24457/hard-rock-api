@@ -10,10 +10,15 @@
 /**fetching using async & await */
 const searchSong=async()=>{
     const searchText = document.getElementById('search-field').value;
-    const url = `https://api.lyrics.ovh/suggest/${searchText}`;
-    const res = await fetch(url);
-    const result = await res.json();
-    displaySongs(result.data);
+    try{
+        const url = `https://api.lyrics.ovh/suggest/${searchText}`;
+        const res = await fetch(url);
+        const result = await res.json();
+        displaySongs(result.data);
+    }catch(error){
+        console.log(error);
+    }
+    
 
 }
 
